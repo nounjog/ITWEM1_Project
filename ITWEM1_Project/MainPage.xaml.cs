@@ -22,6 +22,11 @@ namespace ITWEM1_Project
             //BuildLocalizedApplicationBar();
         }
 
+        private void LogInBut_Checked(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Hello");
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
