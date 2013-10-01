@@ -45,7 +45,8 @@
             <TextBox x:Name="textBox1" Text=""/>
             <TextBlock Text="Password" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
             <TextBox x:Name="textBox2" Text="" />
- <ToggleButton x:Name="Button_LogIn" Content="LOG IN" Margin="9,-7,0,0" Checked="LogInBut_Checked"/>
+ <ToggleButton x:Name="Button_LogIn" Content="LOG IN" Margin="9,-7,0,0" Click="Button_LogIn_Click_1"/>
+ <ToggleButton x:Name="Button_CreateAccount" Content="New Account" Margin="9,-7,0,0" Click="Button_CreateAccount_Click_1"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
