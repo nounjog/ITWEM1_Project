@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 
 namespace ITWEM1_Project.Resources.Model
 {
     class DatabaseModel
     {
-        private static DatabaseModel dbConn = null;
+       /* private static DatabaseModel dbConn = null;
 
         DatabaseModel()
         {
@@ -28,6 +27,6 @@ namespace ITWEM1_Project.Resources.Model
                 dbConn = new DatabaseModel();
             }
             return dbConn;
-        }
+        }*/
     }
 }
