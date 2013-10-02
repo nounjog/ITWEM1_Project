@@ -14,25 +14,72 @@ namespace ITWEM1_Project
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
+
         public MainPage()
         {
             InitializeComponent();
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+
+
+
+        }
+        void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+
+            if (e.Error == null)
+            {
+                verifyAuth(e.Result);
+            }
+           
+        }
+        String webServicesConnect(String url)
+        {
+                    String result="";
+
+            Uri uri = new Uri(url);
+            WebClient webClient = new WebClient();
+            // Register the callback
+            webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
+            webClient.DownloadStringAsync(uri);
+            return result;
+
+        }
+        public void verifyAuth(String res){
+            System.Diagnostics.Debug.WriteLine(res);
+            int id = int.Parse(res);
+           if(id!=0){
+               System.Diagnostics.Debug.WriteLine("SUCCES");
+           }
         }
 
         private void Button_LogIn_Click_1(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Hello");
+            var login = textBox1.Text;
+            var pass = textBox2.Text;
+            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/test.php?login="+login+"&password="+pass);
+           
+          
+
         }
+
+        public String loadHTMLCallback(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            var textData = (string)e.Result;
+            // Do cool stuff with result
+            return textData;
+        }
+
+
+
 
         private void Button_CreateAccount_Click_1(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("Hello");
         }
 
-        
+
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
