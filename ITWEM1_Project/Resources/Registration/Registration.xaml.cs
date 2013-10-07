@@ -11,14 +11,14 @@ using Microsoft.Phone.Shell;
 namespace ITWEM1_Project.Resources.Registration
 {
     public partial class Registration : PhoneApplicationPage
-     {
+    {
         public Registration()
         {
             InitializeComponent();
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
-            textBox4.Text = "";       
+            textBox4.Text = "";
         }
         public class UserInfo
         {
@@ -41,7 +41,7 @@ namespace ITWEM1_Project.Resources.Registration
                 get { return email; }
                 set { email = value; }
             }
- 
+
             public int Mobile
             {
                 get { return mno; }
@@ -54,7 +54,10 @@ namespace ITWEM1_Project.Resources.Registration
             if (textBox1.Text == "") { MessageBox.Show("Plz. enter the username"); }
             if (textBox2.Text == "") { MessageBox.Show("Plz. enter the Password"); }
             if (textBox3.Text == "") { MessageBox.Show("Plz. enter the e-mail add"); }
-            if (textBox4.Text == "") { MessageBox.Show("Plz. enter the mobile number");
+            if (textBox4.Text == "")
+            {
+                MessageBox.Show("Plz. enter the mobile number");
+            }
         }
     }
 }

@@ -51,11 +51,14 @@ namespace ITWEM1_Project
             int id = int.Parse(res);
            if(id!=0){
                System.Diagnostics.Debug.WriteLine("SUCCES");
+               NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
+
            }
         }
 
         private void Button_LogIn_Click_1(object sender, RoutedEventArgs e)
         {
+
             var login = textBox1.Text;
             var pass = textBox2.Text;
             String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/test.php?login="+login+"&password="+pass);

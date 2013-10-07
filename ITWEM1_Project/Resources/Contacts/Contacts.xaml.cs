@@ -7,7 +7,6 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using System.Windows.Controls.StackPanel;
 
 
 namespace ITWEM1_Project.Resources.Contacts
@@ -70,7 +69,7 @@ namespace ITWEM1_Project.Resources.Contacts
                 return result;
             }
 
-            public static Customers Affichage ()
+            public static void Affichage ()
             {
                 Customers customers = Customers.MakeTestCustomers();
                 StackPanel customersStackPanel = new StackPanel();
@@ -81,7 +80,6 @@ namespace ITWEM1_Project.Resources.Contacts
                     customerBlock.Text = c.Name;
                     customersStackPanel.Children.Add(customerBlock);
                 }
-                return customersStackPanel;
             }
         }
     }
