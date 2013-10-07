@@ -6,7 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:bm="using:Bing.Maps"
+    xmlns:Controls="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -46,13 +46,12 @@
             <TextBox x:Name="textBox1" Text=""/>
             <TextBlock Text="Password" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
             <TextBox x:Name="textBox2" Text="" />
- <ToggleButton x:Name="Button_LogIn" Content="LOG IN" Margin="9,-7,0,0" Click="Button_LogIn_Click_1"/>
- <ToggleButton x:Name="Button_CreateAccount" Content="New Account" Margin="9,-7,0,0" Click="Button_CreateAccount_Click_1"/>
+            <ToggleButton x:Name="Button_LogIn" Content="LOG IN" Margin="9,-7,0,0" Click="Button_LogIn_Click_1"/>
+            <ToggleButton x:Name="Button_CreateAccount" Content="New Account" Margin="9,-7,0,0" Click="Button_CreateAccount_Click_1"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <bm:Map Credentials="AmF7RM3MBQi5e5t88Vslns3pv_I6w3mnL_-9e1nieQXgAm2dP86ePhKRFzftyiYO" x:Name="myMap"></bm:Map>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
