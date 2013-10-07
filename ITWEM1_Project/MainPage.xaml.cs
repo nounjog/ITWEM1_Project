@@ -51,13 +51,14 @@ namespace ITWEM1_Project
             int id = int.Parse(res);
            if(id!=0){
                System.Diagnostics.Debug.WriteLine("SUCCES");
-               NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
+             
 
            }
         }
 
         private void Button_LogIn_Click_1(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Resources/Contacts/Contacts.xaml", UriKind.Relative));
 
             var login = textBox1.Text;
             var pass = textBox2.Text;
@@ -79,6 +80,7 @@ namespace ITWEM1_Project
 
         private void Button_CreateAccount_Click_1(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
             System.Diagnostics.Debug.WriteLine("Hello");
         }
 

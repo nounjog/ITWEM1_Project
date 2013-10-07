@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:bm="using:Bing.Maps"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -51,7 +52,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+            <bm:Map Credentials="AmF7RM3MBQi5e5t88Vslns3pv_I6w3mnL_-9e1nieQXgAm2dP86ePhKRFzftyiYO" x:Name="myMap"></bm:Map>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
