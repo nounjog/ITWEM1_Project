@@ -10,16 +10,51 @@ using Microsoft.Phone.Shell;
 
 namespace ITWEM1_Project.Resources.Registration
 {
-    public partial class Page1 : PhoneApplicationPage
-    {
-        public Page1()
+    public partial class Registration : PhoneApplicationPage
+     {
+        public Registration()
         {
             InitializeComponent();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";       
+        }
+        public class UserInfo
+        {
+            string uname;
+            string pwd;
+            string email;
+            int mno;
+            public string Username
+            {
+                get { return uname; }
+                set { uname = value; }
+            }
+            public string Password
+            {
+                get { return pwd; }
+                set { pwd = value; }
+            }
+            public string EmailAdd
+            {
+                get { return email; }
+                set { email = value; }
+            }
+ 
+            public int Mobile
+            {
+                get { return mno; }
+                set { mno = value; }
+            }
         }
 
         private void button1_Click_1(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Hello");
+            if (textBox1.Text == "") { MessageBox.Show("Plz. enter the username"); }
+            if (textBox2.Text == "") { MessageBox.Show("Plz. enter the Password"); }
+            if (textBox3.Text == "") { MessageBox.Show("Plz. enter the e-mail add"); }
+            if (textBox4.Text == "") { MessageBox.Show("Plz. enter the mobile number");
         }
     }
 }
