@@ -58,6 +58,37 @@ namespace ITWEM1_Project.Resources.Registration
             {
                 MessageBox.Show("Plz. enter the mobile number");
             }
+         String res =  webServicesConnect("http://pierrelt.fr/WindowsPhone/adduser.php?login="+textBox1.Text+"&password="+textBox2.Text);
+
+
         }
+        String webServicesConnect(String url)
+        {
+            String result = "";
+
+            Uri uri = new Uri(url);
+            WebClient webClient = new WebClient();
+            // Register the callback
+            webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
+            webClient.DownloadStringAsync(uri);
+            return result;
+
+        }
+        void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+
+            if (e.Error == null)
+            {
+                String res = e.Result;
+                if ("OK".Equals(res))
+                {
+                    System.Diagnostics.Debug.WriteLine("SUCCES");
+
+                }
+            }
+
+        }
+
+
     }
 }

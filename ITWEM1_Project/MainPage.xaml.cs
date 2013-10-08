@@ -80,7 +80,7 @@ namespace ITWEM1_Project
 
         private void Button_CreateAccount_Click_1(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Resources/Registration/Registration.xaml", UriKind.Relative));
             System.Diagnostics.Debug.WriteLine("Hello");
         }
 
