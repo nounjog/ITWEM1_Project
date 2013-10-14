@@ -30,55 +30,51 @@ namespace ITWEM1_Project.Resources.Contacts
                 Address = inAddress;
                 ID = inID;
             }
-        }
 
-        public class Customers
-        {
-            public string Name { get; set; }
-            public Customers(string inName)
+            public class Customers
             {
-                Name = inName;
-                CustomerList = new List<Customer>();
-            }
-            public List<Customer> CustomerList;
-
-
-            public static Customers MakeTestCustomers()
-            {
-
-                string[] firstNames = new string[] { "Rob", "Jim", "Joe", "Nigel", "Sally", "Tim" };
-                string[] lastsNames = new string[] { "Smith", "Jones", "Bloggs", "Miles", "Wilkinson", "Brown" };
-
-                Customers result = new Customers("");
-
-                int id = 0;
-                foreach (string lastName in lastsNames)
+                public string Name { get; set; }
+                public Customers(string inName)
                 {
-                    foreach (string firstname in firstNames)
-                    {
-                        //Construct a customer name
-                        string name = firstname + " " + lastName;
-                        //Add the new customer to the list
-                        result.CustomerList.Add(new Customer(name,
-                        name + "'s House", id));
-                        // Increase the ID for the next customer
-                        id++;
-                    }
+                    Name = inName;
+                    CustomerList = new List<Customer>();
                 }
+                public List<Customer> CustomerList;
 
-                return result;
-            }
 
-            public static void Affichage ()
-            {
-                Customers customers = Customers.MakeTestCustomers();
-                StackPanel customersStackPanel = new StackPanel();
-
-                foreach (Customer c in customers.CustomerList)
+                public static Customers MakeTestCustomers()
                 {
-                    TextBlock customerBlock = new TextBlock();
-                    customerBlock.Text = c.Name;
-                    customersStackPanel.Children.Add(customerBlock);
+
+                    string[] firstNames = new string[] { "Rob", "Jim", "Joe", "Nigel", "Sally", "Tim" };
+                    string[] lastsNames = new string[] { "Smith", "Jones", "Bloggs", "Miles", "Wilkinson", "Brown" };
+
+                    Customers result = new Customers("");
+
+                    int id = 0;
+                    foreach (string lastName in lastsNames)
+                    {
+                        foreach (string firstname in firstNames)
+                        {
+                            //Construct a customer name
+                            string name = firstname + " " + lastName;
+                            //Add the new customer to the list
+                            result.CustomerList.Add(new Customer(name,
+                            name + "'s House", id));
+                            // Increase the ID for the next customer
+                            id++;
+                        }
+                    }
+                    Customers customers = Customers.MakeTestCustomers();
+                    StackPanel customersStackPanel = new StackPanel();
+
+                    foreach (Customer c in customers.CustomerList)
+                    {
+                        TextBlock customerBlock = new TextBlock();
+                        customerBlock.Text = c.Name;
+                        customersStackPanel.Children.Add(customerBlock);
+                    }
+
+                    return result;
                 }
             }
         }
