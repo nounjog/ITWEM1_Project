@@ -26,8 +26,11 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid>
-        <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" Name="customersStackPanel" VerticalAlignment="Top"/>
+        <Grid Margin="12,6,0,10" Grid.Row="1">
+        
+            <ScrollViewer>
+            <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="customersStackPanel" VerticalAlignment="Top"/>
+            </ScrollViewer>
         </Grid>
     </Grid>
 
