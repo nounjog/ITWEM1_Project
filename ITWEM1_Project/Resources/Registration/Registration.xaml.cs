@@ -54,12 +54,11 @@ namespace ITWEM1_Project.Resources.Registration
             if (textBox1.Text == "") { MessageBox.Show("Plz. enter the username"); }
             if (textBox2.Text == "") { MessageBox.Show("Plz. enter the Password"); }
             if (textBox3.Text == "") { MessageBox.Show("Plz. enter the e-mail add"); }
-            if (textBox4.Text == "")
-            {
-                MessageBox.Show("Plz. enter the mobile number");
-            }
-         String res =  webServicesConnect("http://pierrelt.fr/WindowsPhone/adduser.php?login="+textBox1.Text+"&password="+textBox2.Text);
+            if (textBox4.Text == ""){MessageBox.Show("Plz. enter the mobile number");}
 
+         String res =  webServicesConnect("http://pierrelt.fr/WindowsPhone/adduser.php?login="+textBox1.Text+"&password="+textBox2.Text);
+            
+         NavigationService.Navigate(new Uri("/Resources/Contacts/Contacts.xaml", UriKind.Relative));
 
         }
         String webServicesConnect(String url)
