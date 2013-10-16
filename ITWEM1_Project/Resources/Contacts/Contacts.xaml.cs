@@ -10,12 +10,15 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Newtonsoft.Json;
 using System.Data;
+using System.Windows.Input;
+
 
 
 namespace ITWEM1_Project.Resources.Contacts
 {
     public partial class Contacts : PhoneApplicationPage
     {
+        bool mouseDown;
         public Contacts()
         {
             InitializeComponent();
@@ -55,6 +58,9 @@ foreach (var child in jsonObj.Children())
         TextBlock customerBlock = new TextBlock();
         customerBlock.Text = test;
         customersStackPanel.Children.Add(customerBlock);
+        customerBlock.MouseLeftButtonDown += customerBlock_MouseLeftButtonDown;
+        customerBlock.MouseLeftButtonUp += customerBlock_MouseLeftButtonUp;
+        mouseDown = false;
 
 }              
 
@@ -71,7 +77,19 @@ foreach (var child in jsonObj.Children())
             }
 
         }
+        void customerBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (mouseDown)
+            {
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            }
+            mouseDown = false;
+        }
 
+        void customerBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseDown = true;
+        }
 
         public class Customer
         {
