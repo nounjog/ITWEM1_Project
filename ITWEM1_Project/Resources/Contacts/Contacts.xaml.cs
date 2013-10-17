@@ -35,6 +35,8 @@ namespace ITWEM1_Project.Resources.Contacts
 
             getContact();
         }
+
+
         String getContact()
         {
             String result = "";
@@ -55,19 +57,7 @@ namespace ITWEM1_Project.Resources.Contacts
             {
                 dynamic jsonObj = JsonConvert.DeserializeObject(e.Result);
 
-                foreach (var child in jsonObj.Children())
-                {
-                    //System.Diagnostics.Debug.WriteLine("");
-                    string test = child.login.Value;
-                    Button customerBlock = new Button();
-           
-                    customerBlock.Content = test;
 
-                    customersStackPanel.Children.Add(customerBlock);
-
-<<<<<<< HEAD
-                }
-=======
                 foreach (var child in jsonObj.Children())
                 {
                     //System.Diagnostics.Debug.WriteLine("");
@@ -112,7 +102,7 @@ namespace ITWEM1_Project.Resources.Contacts
                 MessageBox.Show(ex.Message);
             }
 
-            String res =  webServicesConnect("http://pierrelt.fr/WindowsPhone/localisation.php?latitude="+MyGeoPosition.Coordinate.Latitude+"&longitude="+MyGeoPosition.Coordinate.Longitude+"&id="+id_receveur);
+            String res =  webServicesConnect("http://pierrelt.fr/WindowsPhone/localisation.php?latitude="+MyGeoPosition.Coordinate.Latitude+"&longitude="+MyGeoPosition.Coordinate.Longitude+"&id="+id_receveur+"&id_e="+MainPage.id);
             
 
         }
@@ -134,12 +124,11 @@ namespace ITWEM1_Project.Resources.Contacts
             if (e.Error == null)
             {
                 String res = e.Result;
-                if ("OK".Equals(res))
-                {
-                    System.Diagnostics.Debug.WriteLine("SUCCES");
->>>>>>> f9b2f886b30cda4a88f4604443910e672e49c7fd
+          
+                    System.Diagnostics.Debug.WriteLine(e.Result);
+                 
 
-                }
+                
             }
 
         }

@@ -30,7 +30,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid Margin="12,6,0,10" Grid.Row="1">
         
-            <ScrollViewer>
+            <ScrollViewer Margin="0,0,0,148">
                 <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="customersStackPanel" VerticalAlignment="Top">
                     <StackPanel.Resources>
                         <Style TargetType="TextBlock">

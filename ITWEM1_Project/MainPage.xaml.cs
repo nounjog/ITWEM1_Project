@@ -25,6 +25,7 @@ namespace ITWEM1_Project
 
 
         }
+       static public int id = 1;
         void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
 
@@ -51,13 +52,13 @@ namespace ITWEM1_Project
             int id = int.Parse(res);
            if(id!=0){
                System.Diagnostics.Debug.WriteLine("SUCCES");
-             
-
+               MainPage.id = id;
            }
         }
 
         private void Button_LogIn_Click_1(object sender, RoutedEventArgs e)
         {
+            
             NavigationService.Navigate(new Uri("/Resources/Contacts/Contacts.xaml", UriKind.Relative));
 
             var login = textBox1.Text;
