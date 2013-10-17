@@ -11,10 +11,12 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    xmlns:local="clr-namespace:ITWEM1_Project.Resources.Contacts">
 
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -29,9 +31,18 @@
         <Grid Margin="12,6,0,10" Grid.Row="1">
         
             <ScrollViewer>
-            <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="customersStackPanel" VerticalAlignment="Top"/>
+                <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="customersStackPanel" VerticalAlignment="Top">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="40" />
+                            <Setter Property="Margin" Value="0,10,0,0"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Style>
+                    </StackPanel.Resources>
+                </StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
+    
