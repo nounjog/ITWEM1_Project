@@ -16,5 +16,20 @@ namespace ITWEM1_Project.Resources.Waiting
         {
             InitializeComponent();
         }
+
+        private void Click_Refresh(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Resources/Waiting/Waiting.xaml?Refresh=true", UriKind.Relative));
+        }
+
+        void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+
+            if (e.Result == "OK")
+            {
+                NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
+
+                }
+            }
+        }
     }
-}
