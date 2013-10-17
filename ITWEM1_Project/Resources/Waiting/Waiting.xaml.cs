@@ -15,8 +15,34 @@ namespace ITWEM1_Project.Resources.Waiting
         public Waiting()
         {
             InitializeComponent();
+            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/refresh.php?id=" + MainPage.id);
+
         }
 
+        String webServicesConnect(String url)
+        {
+            String result = "";
+
+            Uri uri = new Uri(url);
+            WebClient webClient = new WebClient();
+            // Register the callback
+            webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_downloadStringCompleted);
+            webClient.DownloadStringAsync(uri);
+            return result;
+
+        }
+        void webClient_downloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+
+            if (e.Error == null)
+            {
+                String res = e.Result;
+
+                System.Diagnostics.Debug.WriteLine(e.Result);
+
+            }
+
+        }
         private void Click_Refresh(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Resources/Waiting/Waiting.xaml?Refresh=true", UriKind.Relative));
