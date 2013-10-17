@@ -58,6 +58,7 @@ namespace ITWEM1_Project.Resources.Contacts
                 dynamic jsonObj = JsonConvert.DeserializeObject(e.Result);
 
 
+
                 foreach (var child in jsonObj.Children())
                 {
                     //System.Diagnostics.Debug.WriteLine("");
@@ -68,18 +69,18 @@ namespace ITWEM1_Project.Resources.Contacts
                     customersStackPanel.Children.Add(customerBlock);
                     customerBlock.Name = child.id.Value;
                     customerBlock.MouseLeftButtonUp += customerBlock_MouseLeftButtonUp;
-                    
+
 
                 }
             }
         }
         void customerBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-                TextBlock customerBlock = (TextBlock)sender;
-                string id_receveur = customerBlock.Name;
-                GetCoordinates(id_receveur);
-                
-            }
+            TextBlock customerBlock = (TextBlock)sender;
+            string id_receveur = customerBlock.Name;
+            GetCoordinates(id_receveur);
+
+        }
 
         private async void GetCoordinates(string id_receveur)
         {
@@ -102,8 +103,8 @@ namespace ITWEM1_Project.Resources.Contacts
                 MessageBox.Show(ex.Message);
             }
 
-            String res =  webServicesConnect("http://pierrelt.fr/WindowsPhone/localisation.php?latitude="+MyGeoPosition.Coordinate.Latitude+"&longitude="+MyGeoPosition.Coordinate.Longitude+"&id="+id_receveur+"&id_e="+MainPage.id);
-            
+            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/localisation.php?latitude=" + MyGeoPosition.Coordinate.Latitude + "&longitude=" + MyGeoPosition.Coordinate.Longitude + "&id=" + id_receveur + "&id_e=" + MainPage.id);
+
 
         }
         String webServicesConnect(String url)
@@ -124,81 +125,84 @@ namespace ITWEM1_Project.Resources.Contacts
             if (e.Error == null)
             {
                 String res = e.Result;
-          
-                    System.Diagnostics.Debug.WriteLine(e.Result);
-                 
 
-                
-            }
+                System.Diagnostics.Debug.WriteLine(e.Result);
 
-        }
-  
-        }
-        }
-
-        //void customerBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    mouseDown = true
-        //}
-
-        public class Customer
-        {
-            public string Name { get; set; }
-            public int ID { get; set; }
-            public Customer(string inName,
-            int inID)
-            {
-                Name = inName;
-                ID = inID;
-            }
-        }
-        public class Customers
-        {
-            public string Name { get; set; }
-
-
-            public Customers(string inName)
-            {
-                Name = inName;
-                CustomerList = new List<Customer>();
-            }
-            public List<Customer> CustomerList;
-
-
-            public static Customers MakeTestCustomers(string[] firstNames)
-            {
-                Customers result = new Customers("list");
-                int id = 0;
-
-                foreach (string firstname in firstNames)
+                if ("OK".Equals(res))
                 {
-                    //Construct a customer name
-                    string name = firstname;
-                    //Add the new customer to the list
-                    result.CustomerList.Add(new Customer(name, id));
-                    // Increase the ID for the next customer
-                    id++;
+                    System.Diagnostics.Debug.WriteLine("SUCCES");
+
+
                 }
 
-                return result;
             }
-            /*  Customers customers = Customers.MakeTestCustomers();
-              StackPanel customersStackPanel = new StackPanel();
 
-              foreach (Customer c in customers.CustomerList)
-              {
-                  TextBlock customerBlock = new TextBlock();
-                  customerBlock.Text = c.Name;
-                  customersStackPanel.Children.Add(customerBlock);
-              }
-
-              return result;
-          }*/
         }
-    
+    }
+
+    //void customerBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    //{
+    //    mouseDown = true
+    //}
+
+    public class Customer
+    {
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public Customer(string inName,
+        int inID)
+        {
+            Name = inName;
+            ID = inID;
+        }
+    }
+    public class Customers
+    {
+        public string Name { get; set; }
+
+
+        public Customers(string inName)
+        {
+            Name = inName;
+            CustomerList = new List<Customer>();
+        }
+        public List<Customer> CustomerList;
+
+
+        public static Customers MakeTestCustomers(string[] firstNames)
+        {
+            Customers result = new Customers("list");
+            int id = 0;
+
+            foreach (string firstname in firstNames)
+            {
+                //Construct a customer name
+                string name = firstname;
+                //Add the new customer to the list
+                result.CustomerList.Add(new Customer(name, id));
+                // Increase the ID for the next customer
+                id++;
+            }
+
+            return result;
+        }
+        /*  Customers customers = Customers.MakeTestCustomers();
+          StackPanel customersStackPanel = new StackPanel();
+
+          foreach (Customer c in customers.CustomerList)
+          {
+              TextBlock customerBlock = new TextBlock();
+              customerBlock.Text = c.Name;
+              customersStackPanel.Children.Add(customerBlock);
+          }
+
+          return result;
+      }*/
+    }
 
 
 
+}
 
 
 
