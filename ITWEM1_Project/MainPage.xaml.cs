@@ -53,13 +53,14 @@ namespace ITWEM1_Project
            if(id!=0){
                System.Diagnostics.Debug.WriteLine("SUCCES");
                MainPage.id = id;
+               NavigationService.Navigate(new Uri("/Resources/Contacts/Contacts.xaml", UriKind.Relative));
+
            }
         }
 
         private void Button_LogIn_Click_1(object sender, RoutedEventArgs e)
         {
             
-            NavigationService.Navigate(new Uri("/Resources/Contacts/Contacts.xaml", UriKind.Relative));
 
             var login = textBox1.Text;
             var pass = textBox2.Text;
