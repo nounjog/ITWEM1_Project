@@ -65,9 +65,8 @@ namespace ITWEM1_Project.Resources.Contacts
 
                     customersStackPanel.Children.Add(customerBlock);
 
-<<<<<<< HEAD
                 }
-=======
+
                 foreach (var child in jsonObj.Children())
                 {
                     //System.Diagnostics.Debug.WriteLine("");
@@ -137,7 +136,6 @@ namespace ITWEM1_Project.Resources.Contacts
                 if ("OK".Equals(res))
                 {
                     System.Diagnostics.Debug.WriteLine("SUCCES");
->>>>>>> f9b2f886b30cda4a88f4604443910e672e49c7fd
 
                 }
             }
