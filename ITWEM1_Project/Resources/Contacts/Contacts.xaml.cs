@@ -103,7 +103,7 @@ namespace ITWEM1_Project.Resources.Contacts
                 MessageBox.Show(ex.Message);
             }
 
-            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/localisation.php?latitude=" + MyGeoPosition.Coordinate.Latitude + "&longitude=" + MyGeoPosition.Coordinate.Longitude + "&id=" + id_receveur + "&id_e=" + MainPage.id);
+            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/localisation2.php?latitude=" + MyGeoPosition.Coordinate.Latitude + "&longitude=" + MyGeoPosition.Coordinate.Longitude + "&id=" + id_receveur + "&id_e=" + MainPage.id);
 
 
         }
