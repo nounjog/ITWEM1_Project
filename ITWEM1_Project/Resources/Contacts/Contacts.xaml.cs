@@ -44,29 +44,19 @@ namespace ITWEM1_Project.Resources.Contacts
 
             if (e.Error == null)
             {
-
-
                 dynamic jsonObj = JsonConvert.DeserializeObject(e.Result);
 
-foreach (var child in jsonObj.Children())
-{
-    //System.Diagnostics.Debug.WriteLine("");
-        string test = child.login.Value;
-        TextBlock customerBlock = new TextBlock();
-        customerBlock.Text = test;
-        customersStackPanel.Children.Add(customerBlock);
+                foreach (var child in jsonObj.Children())
+                {
+                    //System.Diagnostics.Debug.WriteLine("");
+                    string test = child.login.Value;
+                    Button customerBlock = new Button();
+           
+                    customerBlock.Content = test;
 
-}              
+                    customersStackPanel.Children.Add(customerBlock);
 
-                //Console.Write(test.Name);
-                /*  Customers customers = Customers.MakeTestCustomers(result);
-
-                  foreach (Customer c in customers.CustomerList)
-                  {
-                      TextBlock customerBlock = new TextBlock();
-                      customerBlock.Text = c.Name;
-                      customersStackPanel.Children.Add(customerBlock);
-                  }*/
+                }
 
             }
 
