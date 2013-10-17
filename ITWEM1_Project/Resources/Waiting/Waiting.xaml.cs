@@ -15,7 +15,6 @@ namespace ITWEM1_Project.Resources.Waiting
         public Waiting()
         {
             InitializeComponent();
-            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/refresh.php?id=" + MainPage.id);
 
         }
 
@@ -26,31 +25,20 @@ namespace ITWEM1_Project.Resources.Waiting
             Uri uri = new Uri(url);
             WebClient webClient = new WebClient();
             // Register the callback
-            webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_downloadStringCompleted);
+            webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
             webClient.DownloadStringAsync(uri);
             return result;
 
         }
-        void webClient_downloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-
-            if (e.Error == null)
-            {
-                String res = e.Result;
-
-                System.Diagnostics.Debug.WriteLine(e.Result);
-
-            }
-
-        }
+   
         private void Click_Refresh(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Resources/Waiting/Waiting.xaml?Refresh=true", UriKind.Relative));
+            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/refresh.php?id=" + MainPage.id);
         }
 
         void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-
+            System.Diagnostics.Debug.WriteLine(e.Result);
             if (e.Result == "OK")
             {
                 NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
