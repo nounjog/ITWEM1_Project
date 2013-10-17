@@ -128,10 +128,9 @@ namespace ITWEM1_Project.Resources.Contacts
 
                 System.Diagnostics.Debug.WriteLine(e.Result);
 
-                if ("OK".Equals(res))
+                if (e.Result == "INSERT" || e.Result == "UPDATE")
                 {
-                    System.Diagnostics.Debug.WriteLine("SUCCES");
-
+                    NavigationService.Navigate(new Uri("/Resources/Waiting/Waiting.xaml", UriKind.Relative));
 
                 }
 
