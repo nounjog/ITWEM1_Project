@@ -56,9 +56,10 @@ namespace ITWEM1_Project.Resources.Maps
 
             dynamic jsonObj = JsonConvert.DeserializeObject(e.Result);
 
+
             foreach (var child in jsonObj.Children())
             {
-                //System.Diagnostics.Debug.WriteLine("");
+                System.Diagnostics.Debug.WriteLine(child.lat.Value);
                  lat = child.lat.Value;
                  lon = child.lon.Value;
 
