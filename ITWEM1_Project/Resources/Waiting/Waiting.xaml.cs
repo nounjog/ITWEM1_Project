@@ -44,7 +44,6 @@ namespace ITWEM1_Project.Resources.Waiting
         {
             System.Diagnostics.Debug.WriteLine(e.Result);
 
-            int id = int.Parse(e.Result);
 
             if (e.Result != "")
             {
