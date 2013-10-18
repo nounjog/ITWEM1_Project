@@ -13,6 +13,8 @@ using System.Device.Location; // Provides the GeoCoordinate class.
 using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
+
 
 namespace ITWEM1_Project.Resources.Maps
 {
@@ -21,15 +23,52 @@ namespace ITWEM1_Project.Resources.Maps
         RouteQuery MyQuery = null;
         GeocodeQuery Mygeocodequery = null;
         List<GeoCoordinate> MyCoordinates = new List<GeoCoordinate>();
+        double lat = 0.0;
+        double lon = 0.0;
 
         public Maps()
         {
             InitializeComponent();
-            this.GetCoordinates();
+
+
+            String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/getLocation.php?id=" + MainPage.id+"&status="+Waiting.Waiting.status);
+
+         
+            this.GetCoordinates(lat,lon);
            
         }
+        String webServicesConnect(String url)
+        {
+            String result = "";
 
-        private async void GetCoordinates()
+            Uri uri = new Uri(url);
+            WebClient webClient = new WebClient();
+            // Register the callback
+            webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStringCompleted);
+            webClient.DownloadStringAsync(uri);
+            return result;
+
+        }
+        
+        void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Result);
+
+            dynamic jsonObj = JsonConvert.DeserializeObject(e.Result);
+
+            foreach (var child in jsonObj.Children())
+            {
+                //System.Diagnostics.Debug.WriteLine("");
+                 lat = child.lat.Value;
+                 lon = child.lon.Value;
+
+            }
+         
+            
+        }
+       
+
+        private async void GetCoordinates(double lat, double lon)
         {
             // Get the phone's current location.
             Geolocator MyGeolocator = new Geolocator();
@@ -51,8 +90,7 @@ namespace ITWEM1_Project.Resources.Maps
             }
 
             //RECEVIED COORDINATES
-            double lat = 48.8599;
-            double lon = 002.5187;
+           
            
             double myLat =MyGeoPosition.Coordinate.Latitude;
             double myLon =MyGeoPosition.Coordinate.Longitude;

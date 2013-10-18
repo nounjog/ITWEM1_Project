@@ -7,11 +7,15 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Newtonsoft.Json;
+
 
 namespace ITWEM1_Project.Resources.Waiting
 {
     public partial class Waiting : PhoneApplicationPage
     {
+
+       static public string status = "";
         public Waiting()
         {
             InitializeComponent();
@@ -39,8 +43,12 @@ namespace ITWEM1_Project.Resources.Waiting
         void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(e.Result);
-            if (e.Result == "OK")
+
+            int id = int.Parse(e.Result);
+
+            if (e.Result != "")
             {
+                status = e.Result;
                 NavigationService.Navigate(new Uri("/Resources/Maps/Maps.xaml", UriKind.Relative));
 
                 }
