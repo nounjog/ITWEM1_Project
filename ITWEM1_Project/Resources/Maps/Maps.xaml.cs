@@ -110,8 +110,10 @@ namespace ITWEM1_Project.Resources.Maps
             double queryLat = (lat+myLat)/2;
             double queryLon = (lon+myLon)/2;
 
+            MyMap.Center = new GeoCoordinate(myLat, myLon);
 
             System.Diagnostics.Debug.WriteLine(myLat+"=>"+myLon+"  "+queryLat+"=>"+queryLon);
+
             Mygeocodequery = new GeocodeQuery();
             Mygeocodequery.SearchTerm = queryLat.ToString() +", "+queryLon.ToString();
             //Mygeocodequery.GeoCoordinate = new GeoCoordinate(48.8599, 002.5187);
