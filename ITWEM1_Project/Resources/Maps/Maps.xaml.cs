@@ -14,6 +14,8 @@ using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using System.Data;
+using System.Globalization;
 
 
 namespace ITWEM1_Project.Resources.Maps
@@ -34,7 +36,6 @@ namespace ITWEM1_Project.Resources.Maps
             String res = webServicesConnect("http://pierrelt.fr/WindowsPhone/getLocation.php?id=" + MainPage.id+"&status="+Waiting.Waiting.status);
 
          
-            this.GetCoordinates(lat,lon);
            
         }
         String webServicesConnect(String url)
@@ -55,15 +56,25 @@ namespace ITWEM1_Project.Resources.Maps
             System.Diagnostics.Debug.WriteLine(e.Result);
 
             dynamic jsonObj = JsonConvert.DeserializeObject(e.Result);
-
+           // System.Diagnostics.Debug.WriteLine(jsonObj.toString());
 
             foreach (var child in jsonObj.Children())
             {
-                System.Diagnostics.Debug.WriteLine(child.lat.Value);
-                 lat = child.lat.Value;
-                 lon = child.lon.Value;
+              
+
+              string latTmp = child.lat.Value;
+              string lonTmp = child.lon.Value;
+
+              lat = Convert.ToDouble(latTmp, new CultureInfo("en-US"));
+;
+              lon = Convert.ToDouble(lonTmp, new CultureInfo("en-US"));
+;
+               //  lon = child.lon.Value;
 
             }
+
+            GetCoordinates(lat, lon);
+
          
             
         }
@@ -99,6 +110,8 @@ namespace ITWEM1_Project.Resources.Maps
             double queryLat = (lat+myLat)/2;
             double queryLon = (lon+myLon)/2;
 
+
+            System.Diagnostics.Debug.WriteLine(myLat+"=>"+myLon+"  "+queryLat+"=>"+queryLon);
             Mygeocodequery = new GeocodeQuery();
             Mygeocodequery.SearchTerm = queryLat.ToString() +", "+queryLon.ToString();
             //Mygeocodequery.GeoCoordinate = new GeoCoordinate(48.8599, 002.5187);

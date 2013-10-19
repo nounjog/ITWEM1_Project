@@ -61,7 +61,6 @@ namespace ITWEM1_Project.Resources.Contacts
 
                 foreach (var child in jsonObj.Children())
                 {
-                    //System.Diagnostics.Debug.WriteLine("");
                     string test = child.login.Value;
                     TextBlock customerBlock = new TextBlock();
                     customerBlock.Text = test;
